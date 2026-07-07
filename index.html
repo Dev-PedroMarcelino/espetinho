@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espeto Dú Grande — O verdadeiro sabor da brasa</title>
+  <meta name="description" content="Espetos preparados na hora, na brasa, com ingredientes selecionados. Chopp gelado e aquele sabor que conquista na primeira mordida. Peça pelo WhatsApp." />
+  <meta property="og:title" content="Espeto Dú Grande — Chopp & Cerveja" />
+  <meta property="og:description" content="O verdadeiro sabor da brasa está aqui. Espetos na hora, chopp trincando. Peça pelo WhatsApp." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster+Two:ital,wght@1,700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+</head>
+<body>
+
+  <!-- ============ LOGO (símbolo SVG vetorizado, reutilizado no site inteiro) ============ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="lgFire" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#8f1414"/>
+        <stop offset=".45" stop-color="#d43a12"/>
+        <stop offset="1" stop-color="#f7931e"/>
+      </linearGradient>
+      <linearGradient id="lgScript" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#7e1010"/>
+        <stop offset=".45" stop-color="#c1272d"/>
+        <stop offset="1" stop-color="#ef7d00"/>
+      </linearGradient>
+      <linearGradient id="lgBeer" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fbc25a"/>
+        <stop offset=".55" stop-color="#f1961e"/>
+        <stop offset="1" stop-color="#d97710"/>
+      </linearGradient>
+      <linearGradient id="lgMeatA" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#a3542f"/>
+        <stop offset="1" stop-color="#6f341c"/>
+      </linearGradient>
+      <linearGradient id="lgMeatB" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#b96a45"/>
+        <stop offset="1" stop-color="#82412a"/>
+      </linearGradient>
+      <radialGradient id="lgPaper" cx=".5" cy=".42" r=".75">
+        <stop offset="0" stop-color="#fffefb"/>
+        <stop offset=".8" stop-color="#fdf8ee"/>
+        <stop offset="1" stop-color="#f7efdd"/>
+      </radialGradient>
+
+      <!-- chama reutilizável -->
+      <g id="lgFlame">
+        <path fill="#c1272d" d="M0-62C14-38 30-22 30 4 30 32 16 50 0 54-16 50-30 32-30 4-30-16-16-34 0-62Z"/>
+        <path fill="#f26b13" d="M0-40C10-22 21-10 21 8 21 28 11 40 0 44-11 40-21 28-21 8-21-6-12-24 0-40Z"/>
+        <path fill="#ffc94a" d="M0-18C6-8 12 0 12 12 12 25 6 32 0 34-6 32-12 25-12 12-12 3-7-8 0-18Z"/>
+      </g>
+
+      <!-- lambida de fogo lateral -->
+      <g id="lgWisp">
+        <path fill="#c1272d" d="M0-34C8-20 12-10 10 2 8 14 2 20-2 22 2 12 0 2-4-6-8-14-6-24 0-34Z"/>
+      </g>
+
+      <symbol id="logo-du-grande" viewBox="0 0 512 512">
+        <!-- círculo branco -->
+        <circle cx="256" cy="256" r="248" fill="url(#lgPaper)"/>
+        <circle cx="256" cy="256" r="244" fill="none" stroke="#6e1414" stroke-width="7"/>
+        <circle cx="256" cy="256" r="233" fill="none" stroke="#d9a441" stroke-width="2.5"/>
+
+        <!-- lambidas de fogo ao fundo -->
+        <use href="#lgWisp" transform="translate(112 160) scale(1.5)" opacity=".9"/>
+        <use href="#lgWisp" transform="translate(96 214) scale(1.15) rotate(-14)" opacity=".75"/>
+        <use href="#lgWisp" transform="translate(408 176) scale(1.5) rotate(10)" opacity=".9"/>
+        <use href="#lgWisp" transform="translate(420 232) scale(1.1) rotate(18)" opacity=".7"/>
+        <use href="#lgWisp" transform="translate(140 118) scale(1.05) rotate(-8)" opacity=".7"/>
+        <use href="#lgWisp" transform="translate(382 120) scale(1.05) rotate(8)" opacity=".7"/>
+
+        <!-- chama central -->
+        <use href="#lgFlame" transform="translate(256 208) scale(1.28)"/>
+
+        <!-- ESPETO (esquerda) -->
+        <g transform="rotate(-14 172 190)">
+          <polygon points="172,52 166,90 178,90" fill="#e3c69b" stroke="#a97b4b" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="166" y="86" width="12" height="232" rx="6" fill="#e3c69b" stroke="#a97b4b" stroke-width="3"/>
+          <g stroke="#4a2010" stroke-width="4" stroke-linejoin="round">
+            <rect x="140" y="96"  width="64" height="42" rx="16" fill="url(#lgMeatB)" transform="rotate(-7 172 117)"/>
+            <rect x="136" y="134" width="72" height="46" rx="18" fill="url(#lgMeatA)" transform="rotate(5 172 157)"/>
+            <rect x="141" y="176" width="62" height="42" rx="16" fill="url(#lgMeatB)" transform="rotate(-5 172 197)"/>
+            <rect x="135" y="214" width="74" height="48" rx="18" fill="url(#lgMeatA)" transform="rotate(4 172 238)"/>
+            <rect x="142" y="258" width="60" height="40" rx="15" fill="url(#lgMeatB)" transform="rotate(-6 172 278)"/>
+          </g>
+          <g fill="#d98d5f" opacity=".55">
+            <ellipse cx="158" cy="110" rx="14" ry="7" transform="rotate(-12 158 110)"/>
+            <ellipse cx="156" cy="150" rx="15" ry="8" transform="rotate(8 156 150)"/>
+            <ellipse cx="160" cy="190" rx="13" ry="7" transform="rotate(-8 160 190)"/>
+            <ellipse cx="156" cy="232" rx="15" ry="8" transform="rotate(6 156 232)"/>
+            <ellipse cx="160" cy="272" rx="12" ry="6" transform="rotate(-8 160 272)"/>
+          </g>
+        </g>
+
+        <!-- CANECA (direita) -->
+        <g>
+          <path d="M382 172q46-8 46 38 0 46-46 38" fill="none" stroke="#6e1414" stroke-width="24" stroke-linecap="round"/>
+          <path d="M382 172q46-8 46 38 0 46-46 38" fill="none" stroke="#f1ddba" stroke-width="12" stroke-linecap="round"/>
+          <rect x="296" y="148" width="92" height="132" rx="10" fill="url(#lgBeer)" stroke="#6e1414" stroke-width="6"/>
+          <rect x="322" y="158" width="16" height="112" rx="8" fill="#fbc55a" opacity=".85"/>
+          <rect x="352" y="158" width="12" height="112" rx="6" fill="#fbc55a" opacity=".6"/>
+          <rect x="306" y="158" width="9" height="112" rx="4.5" fill="#fff" opacity=".4"/>
+          <g fill="#fff" opacity=".85">
+            <circle cx="330" cy="196" r="4.5"/><circle cx="352" cy="184" r="3.5"/>
+            <circle cx="341" cy="222" r="5"/><circle cx="362" cy="210" r="3.5"/>
+            <circle cx="326" cy="248" r="3.5"/><circle cx="356" cy="244" r="4.5"/>
+          </g>
+          <!-- espuma -->
+          <path d="M290 152c-8-26 16-40 34-30 4-22 34-28 46-10 8-16 40-14 44 6 20-4 32 20 16 34 2 8-4 14-12 14H302c-8 0-13-6-12-14Z"
+                fill="#fff6e3" stroke="#6e1414" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M312 162c6 0 10 4 10 11v20c0 8-11 8-11 0Z" fill="#fff6e3" stroke="#6e1414" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M366 162c7 0 11 5 11 12v34c0 9-13 9-13 0Z" fill="#fff6e3" stroke="#6e1414" stroke-width="5" stroke-linejoin="round"/>
+          <g fill="#fff6e3" stroke="#6e1414" stroke-width="5">
+            <circle cx="432" cy="112" r="13"/><circle cx="452" cy="140" r="9"/><circle cx="446" cy="86" r="7"/>
+          </g>
+        </g>
+
+        <!-- selo ESPETO -->
+        <rect x="171" y="268" width="170" height="46" rx="23" fill="#fffdf7" stroke="#141414" stroke-width="5"/>
+        <text x="256" y="301" text-anchor="middle" font-family="'Sora',sans-serif" font-weight="800" font-size="27" letter-spacing="6" fill="#141414">ESPETO</text>
+
+        <!-- arcos decorativos -->
+        <path d="M46 300Q64 336 96 352" fill="none" stroke="#6e1414" stroke-width="7" stroke-linecap="round"/>
+        <path d="M466 300q-18 36-50 52" fill="none" stroke="#6e1414" stroke-width="7" stroke-linecap="round"/>
+
+        <!-- Dú Grande -->
+        <text x="256" y="394" text-anchor="middle" font-family="'Lobster Two',cursive" font-style="italic" font-weight="700" font-size="82" fill="url(#lgScript)">Dú Grande</text>
+
+        <path d="M84 410q172 34 344 0" fill="none" stroke="#6e1414" stroke-width="6" stroke-linecap="round"/>
+        <text x="256" y="448" text-anchor="middle" font-family="'Sora',sans-serif" font-weight="700" font-size="25" fill="#141414">Chopp &amp; cerveja</text>
+
+        <!-- mini chamas -->
+        <use href="#lgFlame" transform="translate(196 476) scale(.16)"/>
+        <use href="#lgFlame" transform="translate(226 481) scale(.20)"/>
+        <use href="#lgFlame" transform="translate(256 484) scale(.24)"/>
+        <use href="#lgFlame" transform="translate(286 481) scale(.20)"/>
+        <use href="#lgFlame" transform="translate(316 476) scale(.16)"/>
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <!-- ============ PRELOADER ============ -->
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-logo">
+        <svg class="logo-svg"><use href="#logo-du-grande"/></svg>
+      </div>
+      <div class="preloader-bar"><span></span></div>
+      <p>Acendendo a brasa…</p>
+    </div>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#inicio" class="nav-brand">
+        <span class="nav-logo"><svg class="logo-svg"><use href="#logo-du-grande"/></svg></span>
+        <span class="nav-name">ESPETO <em>Dú Grande</em></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Início</a>
+        <a href="#experiencia">A Brasa</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#chopp">Chopp</a>
+        <a href="#pedido">Contato</a>
+      </nav>
+      <a href="#" class="btn btn-wa btn-wa-nav" data-wa data-wa-msg="Olá! Vim pelo site e quero fazer um pedido 🍢">
+        <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
+        <span>Pedir agora</span>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ============ HERO — vídeo scrub no scroll ============ -->
+  <section class="hero-scroll" id="inicio">
+    <div class="hero-sticky">
+      <video id="heroVideo" class="hero-video" muted playsinline preload="auto" src="midia/video%20espeto.mp4"></video>
+      <video id="heroVideoB" class="hero-video hero-video-b" muted playsinline preload="auto" src="midia/video%20espeto.mp4"></video>
+      <div class="hero-overlay"></div>
+      <div class="hero-smoke smoke-a"></div>
+      <div class="hero-smoke smoke-b"></div>
+      <canvas id="embersHero" class="embers"></canvas>
+
+      <div class="hero-content" id="heroContent">
+        <div class="hero-logo" id="heroLogo">
+          <div class="hero-logo-ring"></div>
+          <svg class="logo-svg"><use href="#logo-du-grande"/></svg>
+        </div>
+        <h1 class="hero-title">
+          <span class="line"><span>O verdadeiro sabor</span></span>
+          <span class="line"><span>da <em>brasa</em> está aqui.</span></span>
+        </h1>
+        <p class="hero-sub">Espetos preparados na hora, ingredientes selecionados<br class="br-desk"> e aquele sabor que conquista na primeira mordida.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-wa btn-lg" data-wa data-wa-msg="Olá! Vim pelo site e quero fazer um pedido 🍢🔥">
+            <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
+            Fazer pedido no WhatsApp
+          </a>
+          <a href="#cardapio" class="btn btn-ghost btn-lg">Ver cardápio</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint" id="scrollHint">
+        <span class="mouse"><span class="wheel"></span></span>
+        <span class="hint-txt">Role para sentir o sabor</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>NA BRASA</span><i>✦</i><span>FEITO NA HORA</span><i>✦</i><span>CHOPP GELADO</span><i>✦</i><span>TEMPERO DA CASA</span><i>✦</i>
+      <span>NA BRASA</span><i>✦</i><span>FEITO NA HORA</span><i>✦</i><span>CHOPP GELADO</span><i>✦</i><span>TEMPERO DA CASA</span><i>✦</i>
+      <span>NA BRASA</span><i>✦</i><span>FEITO NA HORA</span><i>✦</i><span>CHOPP GELADO</span><i>✦</i><span>TEMPERO DA CASA</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- ============ EXPERIÊNCIA ============ -->
+  <section class="experiencia" id="experiencia">
+    <div class="container exp-grid">
+      <div class="exp-text">
+        <span class="eyebrow" data-reveal>🔥 A experiência</span>
+        <h2 class="h2" data-reveal>Cada espeto passa<br><em>pelo fogo certo.</em></h2>
+        <p class="lead" data-reveal>Aqui não tem pressa e não tem atalho: carvão no ponto, carne selecionada e a mão de quem entende de brasa. O espeto chega na sua mesa do jeito que tem que ser — suculento, dourado e no calor da churrasqueira.</p>
+        <ul class="exp-list">
+          <li data-reveal>
+            <span class="exp-ico">🥩</span>
+            <div><strong>Ingredientes selecionados</strong><p>Cortes escolhidos a dedo e tempero da casa.</p></div>
+          </li>
+          <li data-reveal>
+            <span class="exp-ico">🔥</span>
+            <div><strong>Na brasa, na hora</strong><p>Nada de espeto esperando: assou, saiu.</p></div>
+          </li>
+          <li data-reveal>
+            <span class="exp-ico">🍺</span>
+            <div><strong>Chopp & cerveja trincando</strong><p>A dupla perfeita pra acompanhar o fogo.</p></div>
+          </li>
+        </ul>
+        <div class="exp-stats">
+          <div class="stat" data-reveal><b data-count="18">0</b><span>sabores de espeto</span></div>
+          <div class="stat" data-reveal><b>R$<i data-count="10">0</i></b><span>a partir de</span></div>
+          <div class="stat" data-reveal><b data-count="100">0</b><span>% na brasa</span></div>
+        </div>
+      </div>
+      <div class="exp-visual">
+        <div class="espeto-stage" id="espetoStage">
+          <div class="espeto-heat"></div>
+          <img class="espeto-img" id="espetoImg" src="midia/espeto.png" alt="Espeto de carne grelhada na brasa">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARDÁPIO ============ -->
+  <section class="cardapio" id="cardapio">
+    <canvas class="embers embers-menu" id="embersMenu"></canvas>
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow" data-reveal>🍢 Cardápio</span>
+        <h2 class="h2" data-reveal>Escolha o seu <em>preferido</em></h2>
+        <p class="lead center" data-reveal>Toque em um espeto para pedir direto no WhatsApp.</p>
+      </div>
+
+      <div class="menu-group">
+        <div class="menu-group-head" data-reveal>
+          <h3>Clássicos da casa</h3>
+          <span class="price-tag">R$ 10</span>
+        </div>
+        <div class="menu-grid" data-menu="10"></div>
+      </div>
+
+      <div class="menu-group">
+        <div class="menu-group-head" data-reveal>
+          <h3>Selecionados</h3>
+          <span class="price-tag">R$ 12</span>
+        </div>
+        <div class="menu-grid" data-menu="12"></div>
+      </div>
+
+      <div class="menu-feature-row">
+        <a href="#" class="feature-card feature-picanha" data-wa data-wa-msg="Olá! Quero pedir o Especial Picanha 🥩🔥" data-reveal>
+          <span class="feature-badge">⭐ Especial</span>
+          <h3>Especial <em>Picanha</em></h3>
+          <p>A rainha do churrasco: picanha selecionada, selada na brasa com sal grosso.</p>
+          <div class="feature-foot"><span class="feature-price">R$ 16<small>,00</small></span><span class="feature-cta">Pedir agora →</span></div>
+        </a>
+        <a href="#" class="feature-card feature-combo" data-wa data-wa-msg="Olá! Quero pedir o Combo Dú Grande 🍚🍢" data-reveal>
+          <span class="feature-badge">🍚 Acompanha tudo</span>
+          <h3>Combo <em>Dú Grande</em></h3>
+          <p>Arroz soltinho, farofa da casa, pão e vinagrete fresquinho. O par perfeito do espeto.</p>
+          <div class="feature-foot"><span class="feature-price">R$ 15<small>,00</small></span><span class="feature-cta">Pedir agora →</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHOPP ============ -->
+  <section class="chopp" id="chopp">
+    <video class="chopp-video" muted playsinline loop preload="metadata" src="midia/choppe2.mp4"></video>
+    <div class="chopp-overlay"></div>
+    <div class="container chopp-content">
+      <span class="eyebrow gold" data-reveal>🍺 Chopp & cerveja</span>
+      <h2 class="h2" data-reveal>Trincando de <em>gelado.</em></h2>
+      <p class="lead" data-reveal>Espeto bom pede chopp na temperatura certa. Colarinho cremoso, copo gelado e aquele gole que completa a noite.</p>
+      <a href="#" class="btn btn-gold btn-lg" data-reveal data-wa data-wa-msg="Olá! Quero espetos e chopp gelado 🍺🍢">Pedir espeto + chopp</a>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-final" id="pedido">
+    <canvas class="embers" id="embersCta"></canvas>
+    <div class="container cta-inner">
+      <div class="cta-logo" data-reveal><svg class="logo-svg"><use href="#logo-du-grande"/></svg></div>
+      <h2 class="h2 xl" data-reveal>Bateu a fome?<br><em>A brasa já está acesa.</em></h2>
+      <p class="lead center" data-reveal>Chama no WhatsApp que a gente prepara o seu espeto na hora.</p>
+      <a href="#" class="btn btn-wa btn-xl" data-reveal data-wa data-wa-msg="Olá! Vim pelo site e quero fazer um pedido 🍢🔥">
+        <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
+        Fazer pedido no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo"><svg class="logo-svg"><use href="#logo-du-grande"/></svg></span>
+        <p>ESPETO <em>Dú Grande</em><br><small>Chopp & cerveja</small></p>
+      </div>
+      <div class="footer-col">
+        <h4>Atendimento</h4>
+        <p>Quinta a Domingo<br>18h às 23h</p>
+      </div>
+      <div class="footer-col">
+        <h4>Onde estamos</h4>
+        <p>Rua da Brasa, 100 — Centro<br><small>(edite o endereço no rodapé)</small></p>
+      </div>
+      <div class="footer-col">
+        <h4>Peça agora</h4>
+        <a href="#" class="footer-wa" data-wa data-wa-msg="Olá! Vim pelo site e quero fazer um pedido 🍢">WhatsApp →</a>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 Espeto Dú Grande — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ============ FAB WHATSAPP ============ -->
+  <a href="#" class="wa-fab" id="waFab" data-wa data-wa-msg="Olá! Vim pelo site e quero fazer um pedido 🍢" aria-label="Pedir no WhatsApp">
+    <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

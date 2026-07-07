@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- ESPETO DÚ GRANDE — logo vetorizada (recriação) -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@1,700&amp;family=Sora:wght@700;800&amp;display=swap');
+    </style>
+    <linearGradient id="lgFire" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#8f1414"/>
+      <stop offset=".45" stop-color="#d43a12"/>
+      <stop offset="1" stop-color="#f7931e"/>
+    </linearGradient>
+    <linearGradient id="lgScript" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7e1010"/>
+      <stop offset=".45" stop-color="#c1272d"/>
+      <stop offset="1" stop-color="#ef7d00"/>
+    </linearGradient>
+    <linearGradient id="lgBeer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbc25a"/>
+      <stop offset=".55" stop-color="#f1961e"/>
+      <stop offset="1" stop-color="#d97710"/>
+    </linearGradient>
+    <linearGradient id="lgMeatA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a3542f"/>
+      <stop offset="1" stop-color="#6f341c"/>
+    </linearGradient>
+    <linearGradient id="lgMeatB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b96a45"/>
+      <stop offset="1" stop-color="#82412a"/>
+    </linearGradient>
+    <radialGradient id="lgPaper" cx=".5" cy=".42" r=".75">
+      <stop offset="0" stop-color="#fffefb"/>
+      <stop offset=".8" stop-color="#fdf8ee"/>
+      <stop offset="1" stop-color="#f7efdd"/>
+    </radialGradient>
+    <g id="lgFlame">
+      <path fill="#c1272d" d="M0-62C14-38 30-22 30 4 30 32 16 50 0 54-16 50-30 32-30 4-30-16-16-34 0-62Z"/>
+      <path fill="#f26b13" d="M0-40C10-22 21-10 21 8 21 28 11 40 0 44-11 40-21 28-21 8-21-6-12-24 0-40Z"/>
+      <path fill="#ffc94a" d="M0-18C6-8 12 0 12 12 12 25 6 32 0 34-6 32-12 25-12 12-12 3-7-8 0-18Z"/>
+    </g>
+    <g id="lgWisp">
+      <path fill="#c1272d" d="M0-34C8-20 12-10 10 2 8 14 2 20-2 22 2 12 0 2-4-6-8-14-6-24 0-34Z"/>
+    </g>
+  </defs>
+
+  <circle cx="256" cy="256" r="248" fill="url(#lgPaper)"/>
+  <circle cx="256" cy="256" r="244" fill="none" stroke="#6e1414" stroke-width="7"/>
+  <circle cx="256" cy="256" r="233" fill="none" stroke="#d9a441" stroke-width="2.5"/>
+
+  <use href="#lgWisp" transform="translate(112 160) scale(1.5)" opacity=".9"/>
+  <use href="#lgWisp" transform="translate(96 214) scale(1.15) rotate(-14)" opacity=".75"/>
+  <use href="#lgWisp" transform="translate(408 176) scale(1.5) rotate(10)" opacity=".9"/>
+  <use href="#lgWisp" transform="translate(420 232) scale(1.1) rotate(18)" opacity=".7"/>
+  <use href="#lgWisp" transform="translate(140 118) scale(1.05) rotate(-8)" opacity=".7"/>
+  <use href="#lgWisp" transform="translate(382 120) scale(1.05) rotate(8)" opacity=".7"/>
+
+  <use href="#lgFlame" transform="translate(256 208) scale(1.28)"/>
+
+  <g transform="rotate(-14 172 190)">
+    <polygon points="172,52 166,90 178,90" fill="#e3c69b" stroke="#a97b4b" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="166" y="86" width="12" height="232" rx="6" fill="#e3c69b" stroke="#a97b4b" stroke-width="3"/>
+    <g stroke="#4a2010" stroke-width="4" stroke-linejoin="round">
+      <rect x="140" y="96"  width="64" height="42" rx="16" fill="url(#lgMeatB)" transform="rotate(-7 172 117)"/>
+      <rect x="136" y="134" width="72" height="46" rx="18" fill="url(#lgMeatA)" transform="rotate(5 172 157)"/>
+      <rect x="141" y="176" width="62" height="42" rx="16" fill="url(#lgMeatB)" transform="rotate(-5 172 197)"/>
+      <rect x="135" y="214" width="74" height="48" rx="18" fill="url(#lgMeatA)" transform="rotate(4 172 238)"/>
+      <rect x="142" y="258" width="60" height="40" rx="15" fill="url(#lgMeatB)" transform="rotate(-6 172 278)"/>
+    </g>
+    <g fill="#d98d5f" opacity=".55">
+      <ellipse cx="158" cy="110" rx="14" ry="7" transform="rotate(-12 158 110)"/>
+      <ellipse cx="156" cy="150" rx="15" ry="8" transform="rotate(8 156 150)"/>
+      <ellipse cx="160" cy="190" rx="13" ry="7" transform="rotate(-8 160 190)"/>
+      <ellipse cx="156" cy="232" rx="15" ry="8" transform="rotate(6 156 232)"/>
+      <ellipse cx="160" cy="272" rx="12" ry="6" transform="rotate(-8 160 272)"/>
+    </g>
+  </g>
+
+  <g>
+    <path d="M382 172q46-8 46 38 0 46-46 38" fill="none" stroke="#6e1414" stroke-width="24" stroke-linecap="round"/>
+    <path d="M382 172q46-8 46 38 0 46-46 38" fill="none" stroke="#f1ddba" stroke-width="12" stroke-linecap="round"/>
+    <rect x="296" y="148" width="92" height="132" rx="10" fill="url(#lgBeer)" stroke="#6e1414" stroke-width="6"/>
+    <rect x="322" y="158" width="16" height="112" rx="8" fill="#fbc55a" opacity=".85"/>
+    <rect x="352" y="158" width="12" height="112" rx="6" fill="#fbc55a" opacity=".6"/>
+    <rect x="306" y="158" width="9" height="112" rx="4.5" fill="#fff" opacity=".4"/>
+    <g fill="#fff" opacity=".85">
+      <circle cx="330" cy="196" r="4.5"/><circle cx="352" cy="184" r="3.5"/>
+      <circle cx="341" cy="222" r="5"/><circle cx="362" cy="210" r="3.5"/>
+      <circle cx="326" cy="248" r="3.5"/><circle cx="356" cy="244" r="4.5"/>
+    </g>
+    <path d="M290 152c-8-26 16-40 34-30 4-22 34-28 46-10 8-16 40-14 44 6 20-4 32 20 16 34 2 8-4 14-12 14H302c-8 0-13-6-12-14Z"
+          fill="#fff6e3" stroke="#6e1414" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M312 162c6 0 10 4 10 11v20c0 8-11 8-11 0Z" fill="#fff6e3" stroke="#6e1414" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M366 162c7 0 11 5 11 12v34c0 9-13 9-13 0Z" fill="#fff6e3" stroke="#6e1414" stroke-width="5" stroke-linejoin="round"/>
+    <g fill="#fff6e3" stroke="#6e1414" stroke-width="5">
+      <circle cx="432" cy="112" r="13"/><circle cx="452" cy="140" r="9"/><circle cx="446" cy="86" r="7"/>
+    </g>
+  </g>
+
+  <rect x="171" y="268" width="170" height="46" rx="23" fill="#fffdf7" stroke="#141414" stroke-width="5"/>
+  <text x="256" y="301" text-anchor="middle" font-family="'Sora',sans-serif" font-weight="800" font-size="27" letter-spacing="6" fill="#141414">ESPETO</text>
+
+  <path d="M46 300Q64 336 96 352" fill="none" stroke="#6e1414" stroke-width="7" stroke-linecap="round"/>
+  <path d="M466 300q-18 36-50 52" fill="none" stroke="#6e1414" stroke-width="7" stroke-linecap="round"/>
+
+  <text x="256" y="394" text-anchor="middle" font-family="'Lobster Two',cursive" font-style="italic" font-weight="700" font-size="82" fill="url(#lgScript)">Dú Grande</text>
+
+  <path d="M84 410q172 34 344 0" fill="none" stroke="#6e1414" stroke-width="6" stroke-linecap="round"/>
+  <text x="256" y="448" text-anchor="middle" font-family="'Sora',sans-serif" font-weight="700" font-size="25" fill="#141414">Chopp &amp; cerveja</text>
+
+  <use href="#lgFlame" transform="translate(196 476) scale(.16)"/>
+  <use href="#lgFlame" transform="translate(226 481) scale(.20)"/>
+  <use href="#lgFlame" transform="translate(256 484) scale(.24)"/>
+  <use href="#lgFlame" transform="translate(286 481) scale(.20)"/>
+  <use href="#lgFlame" transform="translate(316 476) scale(.16)"/>
+</svg>
