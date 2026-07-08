@@ -117,8 +117,7 @@ function introTimeline() {
   tl.from('#heroLogo', { scale: 0.6, opacity: 0, duration: 1.1, ease: 'back.out(1.6)' })
     .to('.hero-title .line > span', { yPercent: 0, duration: 1.1, stagger: 0.12 }, '-=0.55')
     .from('.hero-sub', { y: 30, opacity: 0, duration: 0.9 }, '-=0.6')
-    .from('.hero-ctas .btn', { y: 26, opacity: 0, duration: 0.7, stagger: 0.12 }, '-=0.55')
-    .from('#scrollHint', { opacity: 0, duration: 0.8 }, '-=0.2');
+    .from('.hero-ctas .btn', { y: 26, opacity: 0, duration: 0.7, stagger: 0.12 }, '-=0.55');
 }
 /* estado inicial do text reveal */
 if (!REDUCED) gsap.set('.hero-title .line > span', { yPercent: 110 });
@@ -176,11 +175,6 @@ if (!REDUCED) {
     y: -90,
     opacity: 0,
     scale: 0.96,
-    ease: 'none',
-  });
-  gsap.to('#scrollHint', {
-    scrollTrigger: { trigger: '.hero-scroll', start: 'top top', end: '30% top', scrub: true },
-    opacity: 0,
     ease: 'none',
   });
   /* leve zoom cinematográfico no vídeo enquanto o hero sai */
@@ -243,23 +237,8 @@ if (!REDUCED) {
 }
 
 /* ============================================================
-   ESPETO — foto gira e dá zoom com o scroll
+   ESPETO — foto estática (sem animação de scroll)
    ============================================================ */
-if (!REDUCED) {
-  gsap.fromTo('#espetoImg',
-    { rotate: -8, rotationY: -24, scale: 0.88, y: 60 },
-    {
-      rotate: 6, rotationY: 22, scale: 1.08, y: -40,
-      transformPerspective: 1100,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#espetoStage',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 0.7,
-      },
-    });
-}
 
 /* ============================================================
    CHOPP — vídeo com play só quando visível + parallax
