@@ -38,9 +38,9 @@ const MENU = {
   ],
 };
 
-/* Bebidas — [nome, descrição, preço]  (⚠️ ajuste os preços) */
+/* Bebidas — [nome, descrição, preço]  (⚠️ ajuste os preços)
+   Obs.: chopp NÃO entra aqui — é servido só no local. */
 const DRINKS = [
-  ['Chopp Gelado', 'Colarinho cremoso, trincando de gelado.', 12],
   ['Cerveja Long Neck', 'A gelada certa pra acompanhar a brasa.', 10],
   ['Refrigerante Lata', 'Coca, Guaraná ou Fanta — bem gelado.', 6],
   ['Água Mineral', 'Com ou sem gás.', 4],
@@ -117,10 +117,15 @@ function cartTotals() {
 function persist() {
   try { localStorage.setItem(LS_KEY, JSON.stringify([...cart.values()])); } catch (e) {}
 }
+/* itens que saíram do cardápio de delivery (não restaurar do localStorage) */
+const REMOVED_IDS = ['chopp-gelado'];
+
 function restore() {
   try {
     (JSON.parse(localStorage.getItem(LS_KEY) || '[]') || []).forEach((it) => {
-      if (it && it.id) cart.set(it.id, { id: it.id, name: it.name, price: +it.price, qty: +it.qty });
+      if (it && it.id && !REMOVED_IDS.includes(it.id)) {
+        cart.set(it.id, { id: it.id, name: it.name, price: +it.price, qty: +it.qty });
+      }
     });
   } catch (e) {}
 }
@@ -265,15 +270,6 @@ document.getElementById('cartClose')?.addEventListener('click', closeCart);
 document.querySelectorAll('[data-cart-open]').forEach((b) =>
   b.addEventListener('click', (e) => { e.preventDefault(); openCart(); }));
 
-/* botões que adicionam um item específico e abrem o carrinho (ex.: chopp) */
-document.querySelectorAll('[data-add]').forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    addToCart(btn.dataset.add, btn.dataset.addName, +btn.dataset.addPrice);
-    openCart();
-  });
-});
-
 /* "Ver cardápio" dentro do carrinho vazio */
 document.getElementById('emptyBrowse')?.addEventListener('click', (e) => {
   e.preventDefault();
@@ -301,18 +297,17 @@ cartForm?.addEventListener('change', (e) => {
   }
 });
 
+/* ⚠️ SEGURANÇA: a mensagem NÃO leva preços de propósito — o cliente
+   poderia editá-los antes de enviar. O total aparece só no site, e o
+   atendimento confirma os valores pelo cardápio oficial. */
 function buildOrderMessage(d) {
   const L = [];
   L.push('*🍢 NOVO PEDIDO — Espeto Dú Grande*');
   L.push('');
   L.push('*🧾 Itens:*');
-  let total = 0;
   cart.forEach((it) => {
-    const sub = it.price * it.qty; total += sub;
-    L.push(`• ${it.qty}x ${it.name} — ${brl(sub)}`);
+    L.push(`• ${it.qty}x ${it.name}`);
   });
-  L.push('');
-  L.push(`*💰 Total: ${brl(total)}*`);
   L.push('━━━━━━━━━━━━━━━');
   L.push(`*👤 Nome:* ${d.nome}`);
   L.push(`*📍 Endereço:* ${d.endereco}`);

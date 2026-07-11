@@ -342,7 +342,8 @@
       <span class="eyebrow gold" data-reveal>🍺 Chopp & cerveja</span>
       <h2 class="h2" data-reveal>Trincando de <em>gelado.</em></h2>
       <p class="lead" data-reveal>Espeto bom pede chopp na temperatura certa. Colarinho cremoso, copo gelado e aquele gole que completa a noite.</p>
-      <button type="button" class="btn btn-gold btn-lg" data-reveal data-add="chopp-gelado" data-add-name="Chopp Gelado" data-add-price="12">🍺 Adicionar chopp ao pedido</button>
+      <p class="chopp-note" data-reveal>🍺 O chopp é servido só aqui no balcão — vem viver essa experiência com a gente.</p>
+      <a href="#cardapio" class="btn btn-gold btn-lg" data-reveal>🍢 Pedir espetos em casa</a>
     </div>
   </section>
 
@@ -400,7 +401,7 @@
       <button type="button" class="cart-close" id="cartClose" aria-label="Fechar">✕</button>
     </header>
 
-    <div class="cart-body">
+    <div class="cart-body" data-lenis-prevent>
       <div class="cart-items" id="cartItems"></div>
 
       <div class="cart-empty" id="cartEmpty">
@@ -443,6 +444,7 @@
         <span>Total do pedido</span>
         <b id="cartTotalDrawer">R$ 0,00</b>
       </div>
+      <p class="cart-note">O valor total é confirmado pelo atendimento no WhatsApp.</p>
       <button type="submit" form="cartForm" class="btn btn-wa cart-send">
         <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
         Enviar pedido no WhatsApp
