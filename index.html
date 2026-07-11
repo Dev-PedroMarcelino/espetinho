@@ -171,10 +171,10 @@
         <a href="#chopp">Chopp</a>
         <a href="#pedido">Contato</a>
       </nav>
-      <a href="#" class="btn btn-wa btn-wa-nav" data-wa data-wa-msg="Olá! Vim pelo site e quero fazer um pedido 🍢">
-        <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
-        <span>Pedir agora</span>
-      </a>
+      <button type="button" class="btn btn-wa btn-wa-nav" data-cart-open>
+        <span class="nav-cart-ico">🛒</span>
+        <span>Meu pedido</span>
+      </button>
       <button class="nav-burger" id="navBurger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -200,11 +200,11 @@
         </h1>
         <p class="hero-sub">Espetos preparados na hora, ingredientes selecionados<br class="br-desk"> e aquele sabor que conquista na primeira mordida.</p>
         <div class="hero-ctas">
-          <a href="#" class="btn btn-wa btn-lg" data-wa data-wa-msg="Olá! Vim pelo site e quero fazer um pedido 🍢🔥">
-            <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
-            Fazer pedido no WhatsApp
+          <a href="#cardapio" class="btn btn-wa btn-lg">
+            <span class="ico-emoji">🍢</span>
+            Montar meu pedido
           </a>
-          <a href="#cardapio" class="btn btn-ghost btn-lg">Ver cardápio</a>
+          <a href="#" class="btn btn-ghost btn-lg" data-wa data-wa-msg="Olá! Vim pelo site do Espeto Dú Grande e tenho uma dúvida 🍢">Falar no WhatsApp</a>
         </div>
       </div>
 
@@ -266,7 +266,7 @@
       <div class="sec-head">
         <span class="eyebrow" data-reveal>🍢 Cardápio</span>
         <h2 class="h2" data-reveal>Escolha o seu <em>preferido</em></h2>
-        <p class="lead center" data-reveal>Toque em um espeto para pedir direto no WhatsApp.</p>
+        <p class="lead center" data-reveal>Toque no <strong>+</strong> para adicionar ao pedido e finalize direto no WhatsApp.</p>
       </div>
 
       <div class="menu-group">
@@ -285,19 +285,51 @@
         <div class="menu-grid" data-menu="12"></div>
       </div>
 
+      <div class="menu-group">
+        <div class="menu-group-head" data-reveal>
+          <h3>Bebidas geladas</h3>
+          <span class="price-tag">🍺 Trincando</span>
+        </div>
+        <div class="menu-grid" data-drinks></div>
+      </div>
+
       <div class="menu-feature-row">
-        <a href="#" class="feature-card feature-picanha" data-wa data-wa-msg="Olá! Quero pedir o Especial Picanha 🥩🔥" data-reveal>
+        <article class="feature-card feature-picanha" data-reveal>
           <span class="feature-badge">⭐ Especial</span>
           <h3>Especial <em>Picanha</em></h3>
           <p>A rainha do churrasco: picanha selecionada, selada na brasa com sal grosso.</p>
-          <div class="feature-foot"><span class="feature-price">R$ 16<small>,00</small></span><span class="feature-cta">Pedir agora →</span></div>
-        </a>
-        <a href="#" class="feature-card feature-combo" data-wa data-wa-msg="Olá! Quero pedir o Combo Dú Grande 🍚🍢" data-reveal>
+          <div class="feature-foot">
+            <span class="feature-price">R$ 16<small>,00</small></span>
+            <div class="add-ctrl" data-id="especial-picanha" data-name="Especial Picanha" data-price="16">
+              <button class="add-btn" type="button" aria-label="Adicionar Especial Picanha ao pedido">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg><span>Adicionar</span>
+              </button>
+              <div class="qty" hidden>
+                <button class="qty-btn" type="button" data-dec aria-label="Remover um">−</button>
+                <span class="qty-n">0</span>
+                <button class="qty-btn" type="button" data-inc aria-label="Adicionar um">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="feature-card feature-combo" data-reveal>
           <span class="feature-badge">🍚 Acompanha tudo</span>
           <h3>Combo <em>Dú Grande</em></h3>
           <p>Arroz soltinho, farofa da casa, pão e vinagrete fresquinho. O par perfeito do espeto.</p>
-          <div class="feature-foot"><span class="feature-price">R$ 15<small>,00</small></span><span class="feature-cta">Pedir agora →</span></div>
-        </a>
+          <div class="feature-foot">
+            <span class="feature-price">R$ 15<small>,00</small></span>
+            <div class="add-ctrl" data-id="combo-du-grande" data-name="Combo Dú Grande" data-price="15">
+              <button class="add-btn" type="button" aria-label="Adicionar Combo Dú Grande ao pedido">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg><span>Adicionar</span>
+              </button>
+              <div class="qty" hidden>
+                <button class="qty-btn" type="button" data-dec aria-label="Remover um">−</button>
+                <span class="qty-n">0</span>
+                <button class="qty-btn" type="button" data-inc aria-label="Adicionar um">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -310,7 +342,7 @@
       <span class="eyebrow gold" data-reveal>🍺 Chopp & cerveja</span>
       <h2 class="h2" data-reveal>Trincando de <em>gelado.</em></h2>
       <p class="lead" data-reveal>Espeto bom pede chopp na temperatura certa. Colarinho cremoso, copo gelado e aquele gole que completa a noite.</p>
-      <a href="#" class="btn btn-gold btn-lg" data-reveal data-wa data-wa-msg="Olá! Quero espetos e chopp gelado 🍺🍢">Pedir espeto + chopp</a>
+      <button type="button" class="btn btn-gold btn-lg" data-reveal data-add="chopp-gelado" data-add-name="Chopp Gelado" data-add-price="12">🍺 Adicionar chopp ao pedido</button>
     </div>
   </section>
 
@@ -320,11 +352,11 @@
     <div class="container cta-inner">
       <div class="cta-logo" data-reveal><svg class="logo-svg"><use href="#logo-du-grande"/></svg></div>
       <h2 class="h2 xl" data-reveal>Bateu a fome?<br><em>A brasa já está acesa.</em></h2>
-      <p class="lead center" data-reveal>Chama no WhatsApp que a gente prepara o seu espeto na hora.</p>
-      <a href="#" class="btn btn-wa btn-xl" data-reveal data-wa data-wa-msg="Olá! Vim pelo site e quero fazer um pedido 🍢🔥">
-        <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
-        Fazer pedido no WhatsApp
-      </a>
+      <p class="lead center" data-reveal>Monte seu pedido pelo site e finalize direto no WhatsApp — rapidinho.</p>
+      <button type="button" class="btn btn-wa btn-xl" data-reveal data-cart-open>
+        <span class="ico-emoji">🛒</span>
+        Fazer meu pedido
+      </button>
     </div>
   </section>
 
@@ -353,8 +385,76 @@
     </div>
   </footer>
 
+  <!-- ============ CARRINHO — barra flutuante ============ -->
+  <button type="button" class="cart-bar" id="cartBar" aria-label="Ver meu pedido">
+    <span class="cart-bar-ico">🛒<i class="cart-count" id="cartCountBar">0</i></span>
+    <span class="cart-bar-label">Ver meu pedido</span>
+    <span class="cart-bar-total" id="cartTotalBar">R$ 0,00</span>
+  </button>
+
+  <!-- ============ CARRINHO — drawer ============ -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Seu pedido">
+    <header class="cart-head">
+      <h3>Seu pedido 🍢</h3>
+      <button type="button" class="cart-close" id="cartClose" aria-label="Fechar">✕</button>
+    </header>
+
+    <div class="cart-body">
+      <div class="cart-items" id="cartItems"></div>
+
+      <div class="cart-empty" id="cartEmpty">
+        <span class="em">🛒</span>
+        <p>Seu carrinho está vazio.<br>Escolha seus espetos favoritos e monte o pedido! 🔥</p>
+        <a href="#cardapio" class="btn btn-ghost" id="emptyBrowse">Ver cardápio</a>
+      </div>
+
+      <form class="cart-form" id="cartForm" hidden>
+        <h4>Seus dados para entrega</h4>
+        <label class="cf-field">
+          <span>Nome</span>
+          <input type="text" name="nome" placeholder="Seu nome" required autocomplete="name">
+        </label>
+        <label class="cf-field">
+          <span>Endereço de entrega</span>
+          <textarea name="endereco" placeholder="Rua, número, bairro e ponto de referência" required></textarea>
+        </label>
+        <div class="cf-field">
+          <span>Forma de pagamento</span>
+          <div class="pay-opts">
+            <label class="pay-opt"><input type="radio" name="pagamento" value="Pix" required><span><b>🔑</b>Pix</span></label>
+            <label class="pay-opt"><input type="radio" name="pagamento" value="Dinheiro"><span><b>💵</b>Dinheiro</span></label>
+            <label class="pay-opt"><input type="radio" name="pagamento" value="Cartão"><span><b>💳</b>Cartão</span></label>
+          </div>
+        </div>
+        <label class="cf-field" id="trocoWrap" hidden>
+          <span>Precisa de troco? Para quanto?</span>
+          <input type="text" name="troco" placeholder="Ex: R$ 50,00" inputmode="numeric">
+        </label>
+        <label class="cf-field">
+          <span>Observações (opcional)</span>
+          <textarea name="obs" placeholder="Ex: sem cebola, ponto da carne, etc."></textarea>
+        </label>
+      </form>
+    </div>
+
+    <footer class="cart-foot" id="cartFoot" hidden>
+      <div class="cart-total-row">
+        <span>Total do pedido</span>
+        <b id="cartTotalDrawer">R$ 0,00</b>
+      </div>
+      <button type="submit" form="cartForm" class="btn btn-wa cart-send">
+        <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
+        Enviar pedido no WhatsApp
+      </button>
+    </footer>
+  </aside>
+
+  <!-- ============ TOAST ============ -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <!-- ============ FAB WHATSAPP ============ -->
-  <a href="#" class="wa-fab" id="waFab" data-wa data-wa-msg="Olá! Vim pelo site e quero fazer um pedido 🍢" aria-label="Pedir no WhatsApp">
+  <a href="#" class="wa-fab" id="waFab" data-wa data-wa-msg="Olá! Vim pelo site do Espeto Dú Grande e tenho uma dúvida 🍢" aria-label="Falar no WhatsApp">
     <svg viewBox="0 0 24 24" class="ico-wa"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.3.2-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
   </a>
 

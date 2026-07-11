@@ -1,9 +1,10 @@
 /* ============================================================
-   ESPETO DÚ GRANDE — interações & motion
+   ESPETO DÚ GRANDE — interações, carrinho & motion
    ============================================================ */
 
 /* ⚠️ CONFIGURE AQUI: número do WhatsApp com DDI + DDD (só dígitos) */
-const WHATSAPP_NUMBER = '5511999999999';
+/* PROVISÓRIO — número definitivo: 5519992560635 (19 99256-0635) */
+const WHATSAPP_NUMBER = '5519998493780'; // (19) 99849-3780
 
 const IS_TOUCH = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -11,7 +12,7 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 gsap.registerPlugin(ScrollTrigger);
 
 /* ============================================================
-   CARDÁPIO (dados)
+   CARDÁPIO (dados) — [nome, descrição]  (preço vem da chave)
    ============================================================ */
 const MENU = {
   10: [
@@ -37,32 +38,316 @@ const MENU = {
   ],
 };
 
+/* Bebidas — [nome, descrição, preço]  (⚠️ ajuste os preços) */
+const DRINKS = [
+  ['Chopp Gelado', 'Colarinho cremoso, trincando de gelado.', 12],
+  ['Cerveja Long Neck', 'A gelada certa pra acompanhar a brasa.', 10],
+  ['Refrigerante Lata', 'Coca, Guaraná ou Fanta — bem gelado.', 6],
+  ['Água Mineral', 'Com ou sem gás.', 4],
+];
+
+/* slug estável a partir do nome (id do item) */
+const DIACRITICS = new RegExp('[\\u0300-\\u036f]', 'g');
+function slug(s) {
+  return s.toLowerCase()
+    .normalize('NFD').replace(DIACRITICS, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+/* ícone "+" reutilizável */
+const PLUS_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg>';
+
+/* markup do controle de adicionar/quantidade */
+function addCtrl(id, name, price) {
+  return `
+    <div class="add-ctrl" data-id="${id}" data-name="${name}" data-price="${price}">
+      <button class="add-btn" type="button" aria-label="Adicionar ${name} ao pedido">
+        ${PLUS_SVG}<span>Adicionar</span>
+      </button>
+      <div class="qty" hidden>
+        <button class="qty-btn" type="button" data-dec aria-label="Remover um ${name}">−</button>
+        <span class="qty-n">0</span>
+        <button class="qty-btn" type="button" data-inc aria-label="Adicionar mais um ${name}">+</button>
+      </div>
+    </div>`;
+}
+
+function menuCard(name, desc, price) {
+  const id = slug(name);
+  const card = document.createElement('article');
+  card.className = 'menu-card';
+  card.innerHTML = `
+    <div class="menu-card-main">
+      <div class="menu-card-top">
+        <h4>${name}</h4>
+        <span class="menu-dots"></span>
+        <span class="menu-price">R$ ${price}</span>
+      </div>
+      <p>${desc}</p>
+    </div>
+    ${addCtrl(id, name, price)}`;
+  return card;
+}
+
 function buildMenu() {
   Object.entries(MENU).forEach(([price, items]) => {
     const grid = document.querySelector(`[data-menu="${price}"]`);
     if (!grid) return;
-    items.forEach(([name, desc]) => {
-      const card = document.createElement('a');
-      card.className = 'menu-card';
-      card.href = '#';
-      card.dataset.wa = '';
-      card.dataset.waMsg = `Olá! Quero pedir um espeto de ${name} 🍢`;
-      card.innerHTML = `
-        <div class="menu-card-top">
-          <h4>${name}</h4>
-          <span class="menu-dots"></span>
-          <span class="menu-price">R$ ${price}</span>
-        </div>
-        <p>${desc}</p>
-        <span class="menu-order">Pedir no WhatsApp →</span>`;
-      grid.appendChild(card);
-    });
+    items.forEach(([name, desc]) => grid.appendChild(menuCard(name, desc, +price)));
   });
+  const drinksGrid = document.querySelector('[data-drinks]');
+  if (drinksGrid) DRINKS.forEach(([name, desc, price]) => drinksGrid.appendChild(menuCard(name, desc, price)));
 }
 buildMenu();
 
 /* ============================================================
-   WHATSAPP — todos os CTAs
+   CARRINHO — estado + persistência
+   ============================================================ */
+const cart = new Map(); // id -> { id, name, price, qty }
+const LS_KEY = 'duGrandeCart';
+
+function brl(v) { return 'R$ ' + v.toFixed(2).replace('.', ','); }
+
+function cartTotals() {
+  let count = 0, total = 0;
+  cart.forEach((it) => { count += it.qty; total += it.price * it.qty; });
+  return { count, total };
+}
+
+function persist() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify([...cart.values()])); } catch (e) {}
+}
+function restore() {
+  try {
+    (JSON.parse(localStorage.getItem(LS_KEY) || '[]') || []).forEach((it) => {
+      if (it && it.id) cart.set(it.id, { id: it.id, name: it.name, price: +it.price, qty: +it.qty });
+    });
+  } catch (e) {}
+}
+
+function addToCart(id, name, price) {
+  const it = cart.get(id);
+  if (it) it.qty++;
+  else cart.set(id, { id, name, price: +price, qty: 1 });
+  bumpBar();
+  syncUI();
+}
+function decFromCart(id) {
+  const it = cart.get(id);
+  if (!it) return;
+  it.qty--;
+  if (it.qty <= 0) cart.delete(id);
+  syncUI();
+}
+
+/* ============================================================
+   CARRINHO — interface
+   ============================================================ */
+const cartBar = document.getElementById('cartBar');
+const cartDrawer = document.getElementById('cartDrawer');
+const cartOverlay = document.getElementById('cartOverlay');
+
+function bumpBar() {
+  if (!cartBar) return;
+  cartBar.classList.remove('bump');
+  void cartBar.offsetWidth; // reinicia a animação
+  cartBar.classList.add('bump');
+}
+
+function syncUI() {
+  /* controles de cada card */
+  document.querySelectorAll('.add-ctrl').forEach((ctrl) => {
+    const qty = cart.get(ctrl.dataset.id)?.qty || 0;
+    const addBtn = ctrl.querySelector('.add-btn');
+    const qtyBox = ctrl.querySelector('.qty');
+    if (qty > 0) {
+      addBtn.hidden = true; qtyBox.hidden = false;
+      qtyBox.querySelector('.qty-n').textContent = qty;
+    } else {
+      addBtn.hidden = false; qtyBox.hidden = true;
+    }
+    ctrl.closest('.menu-card, .feature-card')?.classList.toggle('in-cart', qty > 0);
+  });
+
+  /* barra flutuante */
+  const { count, total } = cartTotals();
+  const cb = document.getElementById('cartCountBar');
+  const tb = document.getElementById('cartTotalBar');
+  if (cb) cb.textContent = count;
+  if (tb) tb.textContent = brl(total);
+  document.body.classList.toggle('has-cart', count > 0);
+
+  if (cartDrawer?.classList.contains('open')) renderDrawer();
+  persist();
+}
+
+function renderDrawer() {
+  const wrap = document.getElementById('cartItems');
+  const empty = document.getElementById('cartEmpty');
+  const form = document.getElementById('cartForm');
+  const foot = document.getElementById('cartFoot');
+  if (!wrap) return;
+
+  if (cart.size === 0) {
+    wrap.innerHTML = '';
+    empty.hidden = false; form.hidden = true; foot.hidden = true;
+    return;
+  }
+  empty.hidden = true; form.hidden = false; foot.hidden = false;
+
+  let total = 0, html = '';
+  cart.forEach((it) => {
+    const sub = it.price * it.qty; total += sub;
+    html += `
+      <div class="ci" data-id="${it.id}" data-name="${it.name}" data-price="${it.price}">
+        <div class="ci-info">
+          <span class="ci-name">${it.name}</span>
+          <span class="ci-unit">${brl(it.price)} / un</span>
+        </div>
+        <div class="qty ci-qty">
+          <button class="qty-btn" type="button" data-dec aria-label="Remover um">−</button>
+          <span class="qty-n">${it.qty}</span>
+          <button class="qty-btn" type="button" data-inc aria-label="Adicionar um">+</button>
+        </div>
+        <span class="ci-sub">${brl(sub)}</span>
+      </div>`;
+  });
+  wrap.innerHTML = html;
+  document.getElementById('cartTotalDrawer').textContent = brl(total);
+}
+
+function openCart() {
+  renderDrawer();
+  cartDrawer.classList.add('open');
+  cartOverlay.classList.add('open');
+  cartDrawer.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('cart-open');
+  if (lenis) lenis.stop();
+}
+function closeCart() {
+  cartDrawer.classList.remove('open');
+  cartOverlay.classList.remove('open');
+  cartDrawer.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('cart-open');
+  if (lenis) lenis.start();
+}
+
+/* toast de confirmação */
+let toastTimer = null;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+/* ============================================================
+   CARRINHO — eventos (delegação)
+   ============================================================ */
+document.addEventListener('click', (e) => {
+  const add = e.target.closest('.add-btn');
+  const inc = e.target.closest('[data-inc]');
+  const dec = e.target.closest('[data-dec]');
+  if (!add && !inc && !dec) return;
+  const ctrl = e.target.closest('.add-ctrl, .ci');
+  if (!ctrl) return;
+  const { id, name, price } = ctrl.dataset;
+  if (add || inc) addToCart(id, name, +price);
+  else decFromCart(id);
+});
+
+/* abrir / fechar o carrinho */
+cartBar?.addEventListener('click', openCart);
+cartOverlay?.addEventListener('click', closeCart);
+document.getElementById('cartClose')?.addEventListener('click', closeCart);
+document.querySelectorAll('[data-cart-open]').forEach((b) =>
+  b.addEventListener('click', (e) => { e.preventDefault(); openCart(); }));
+
+/* botões que adicionam um item específico e abrem o carrinho (ex.: chopp) */
+document.querySelectorAll('[data-add]').forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    addToCart(btn.dataset.add, btn.dataset.addName, +btn.dataset.addPrice);
+    openCart();
+  });
+});
+
+/* "Ver cardápio" dentro do carrinho vazio */
+document.getElementById('emptyBrowse')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  closeCart();
+  const target = document.getElementById('cardapio');
+  if (lenis) lenis.scrollTo(target, { offset: -20, duration: 1.4 });
+  else target?.scrollIntoView({ behavior: 'smooth' });
+});
+
+/* fechar com ESC */
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && cartDrawer?.classList.contains('open')) closeCart();
+});
+
+/* ============================================================
+   CHECKOUT — monta a mensagem e envia pro WhatsApp
+   ============================================================ */
+const cartForm = document.getElementById('cartForm');
+
+/* mostra o campo de troco só no Dinheiro */
+cartForm?.addEventListener('change', (e) => {
+  if (e.target.name === 'pagamento') {
+    const troco = document.getElementById('trocoWrap');
+    if (troco) troco.hidden = e.target.value !== 'Dinheiro';
+  }
+});
+
+function buildOrderMessage(d) {
+  const L = [];
+  L.push('*🍢 NOVO PEDIDO — Espeto Dú Grande*');
+  L.push('');
+  L.push('*🧾 Itens:*');
+  let total = 0;
+  cart.forEach((it) => {
+    const sub = it.price * it.qty; total += sub;
+    L.push(`• ${it.qty}x ${it.name} — ${brl(sub)}`);
+  });
+  L.push('');
+  L.push(`*💰 Total: ${brl(total)}*`);
+  L.push('━━━━━━━━━━━━━━━');
+  L.push(`*👤 Nome:* ${d.nome}`);
+  L.push(`*📍 Endereço:* ${d.endereco}`);
+  let pag = `*💳 Pagamento:* ${d.pag}`;
+  if (d.pag === 'Dinheiro' && d.troco) pag += ` (troco para ${d.troco})`;
+  L.push(pag);
+  if (d.obs) L.push(`*📝 Observações:* ${d.obs}`);
+  L.push('');
+  L.push('_Pedido enviado pelo site ✅_');
+  return L.join('\n');
+}
+
+cartForm?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (cart.size === 0) { showToast('Seu carrinho está vazio 🙂'); return; }
+  const f = new FormData(cartForm);
+  const data = {
+    nome: (f.get('nome') || '').trim(),
+    endereco: (f.get('endereco') || '').trim(),
+    pag: f.get('pagamento'),
+    troco: (f.get('troco') || '').trim(),
+    obs: (f.get('obs') || '').trim(),
+  };
+  if (!data.nome || !data.endereco || !data.pag) return; // required do HTML cobre
+  const msg = encodeURIComponent(buildOrderMessage(data));
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+  showToast('Pedido enviado no WhatsApp! 🔥');
+});
+
+/* estado inicial do carrinho */
+restore();
+syncUI();
+
+/* ============================================================
+   WHATSAPP — CTAs de contato direto (sem carrinho)
    ============================================================ */
 document.querySelectorAll('[data-wa]').forEach((el) => {
   el.addEventListener('click', (e) => {
@@ -84,9 +369,11 @@ if (!REDUCED) {
 }
 
 /* âncoras internas com Lenis */
-document.querySelectorAll('a[href^="#"]:not([data-wa])').forEach((a) => {
+document.querySelectorAll('a[href^="#"]:not([data-wa]):not([data-cart-open])').forEach((a) => {
   a.addEventListener('click', (e) => {
-    const target = document.querySelector(a.getAttribute('href'));
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
     if (!target) return;
     e.preventDefault();
     document.getElementById('navLinks')?.classList.remove('open');
