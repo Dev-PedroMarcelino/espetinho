@@ -722,6 +722,14 @@ ul { list-style: none; }
 }
 .footer-col p { font-size: .92rem; color: rgba(245, 239, 230, .6); }
 .footer-col small { color: rgba(245, 239, 230, .3); font-size: .74rem; }
+.footer-stores { display: grid; gap: .55rem; }
+.footer-stores a {
+  display: inline-block;
+  font-size: .86rem; line-height: 1.4;
+  color: rgba(245, 239, 230, .6);
+  transition: color .3s;
+}
+.footer-stores a:hover { color: var(--gold-light); }
 .footer-wa { font-weight: 600; color: var(--wa); transition: color .3s; }
 .footer-wa:hover { color: #5ff29b; }
 .footer-base {
