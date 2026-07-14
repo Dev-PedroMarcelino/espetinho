@@ -3,8 +3,7 @@
    ============================================================ */
 
 /* ⚠️ CONFIGURE AQUI: número do WhatsApp com DDI + DDD (só dígitos) */
-/* PROVISÓRIO — número definitivo: 5519992560635 (19 99256-0635) */
-const WHATSAPP_NUMBER = '5519998493780'; // (19) 99849-3780
+const WHATSAPP_NUMBER = '5519992560635'; // (19) 99256-0635
 
 const IS_TOUCH = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
